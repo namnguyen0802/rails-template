@@ -1,0 +1,87 @@
+<div class="sign_up_form">
+  <div class="container px-3">
+    <div class="col-lg-5 col-md-7 col-12 m-auto px-0">
+      <div class="card px-1">
+        <div class="card-body pt-5 px-3">
+          <h1 class="text-register pb-3">REGISTER AN ACCOUNT</h1>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <% unless resource.errors.any? %>
+                <%= render 'users/auths/shared/popup' %>
+              <% end %>
+              <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email Address", input_html: { class: "w-100 field_input", value: params[:email] } %>
+              <div class="selectdiv">
+              </div>
+              <!-- <i class="fa fa-ellipsis-h" aria-hidden="true"></i> -->
+
+              <%#= recaptcha_tags  %>
+              <div class="g-recaptcha d-flex" data-sitekey="6LcCOXAUAAAAANiND0WaMoNIhLqjkXJssejPCbUc" data-callback="enableBtn"></div>
+
+
+              <%= f.input :terms_and_conditions, input_html: { checked: false }, as: :boolean, label: false %>
+
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up", class: "btn-regis w-100", disabled: true, id: "button-submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".country-select").removeClass("is-valid")
+    })
+
+    function enableBtn() {
+        document.getElementById("button-submit").disabled = false;
+    }
+
+    $('<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password eye-inactive"></span>').insertAfter("#password-field");
+    // $('<span class="fa fa-fw fa-check-circle field-icon eye-active"></span>').insertAfter(".form-control.is-valid");
+
+
+    $('<label class="text-fill-info  ml-2" style="color: rgba(0, 0, 0, 0.5);"><h3 class="mb-0 confirm-text" style= "text-align: start; font-family: Proxima_Nova_Light; font-size: 16px;">I confirm that I am 18 years of age or older and I agree to the <a href="/terms-of-use" target="_blank">Terms of Use</a>, <a href="/privacy-policy" target="_blank">Privacy Policy</a>, and <a href="/aml-kyc-policy" target="_blank">AML/KYC Policy</a></h3></label>').insertAfter('#user_terms_and_conditions');
+    $(".toggle-password").click(function () {
+        $(this).toggleClass("eye-active eye-inactive");
+        const input = $($(this).attr("toggle"));
+        if (input.attr("type") === "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+</script>
+<style type="text/css">
+    select::-ms-expand {
+        display: none;
+    }
+
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        text-indent: 10px;
+    }
+
+    .selectdiv {
+        position: relative;
+    }
+
+    .selectdiv:before {
+        content: '\f141';
+        font-family: FontAwesome;
+        color: #A6A6A6;
+        right: 15px;
+        padding-top: 11px;
+        position: absolute;
+        pointer-events: none;
+        font-weight: 30px;
+        transform: scale(1.5, 1.5);
+    }
+
+    /* IE11 hide native button (thanks Matt!) */
+</style>

@@ -1,0 +1,107 @@
+<div class="modal fade" id="kyc_popup" tabindex="-1" role="dialog" aria-labelledby="modal_subscribeLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content subscribe-modal" style="border: none; background: none;">
+        <div  class="wrap-modal-body px-3">
+          <div class="modal-body">
+            <div class="container" style="border-radius: 15px 0;">
+              <div class="row">
+                <div class="ligh-heigh">
+                  <%#= image_tag("kyc_popup.png", class: "logo_x img-fluid") %>
+                  <p>In order to provide a safe and secure digital asset platform, you must <b>verify your contact details</b> (email and mobile phone) and <b>submit documents</b> for KYC purposes.</p>
+                  <p class="mb-0">1. Upload a colour image of your <b>valid ID</b> document (image file or HD webcam*)</p>
+                  <ul>
+                    <li>International Passport / National Identity Card / Driver’s License</li>
+                    <li>Of original only (not a copy)</li>
+                    <li>Unobstructed</li>
+                    <li>Sharp and in-focus</li>
+                  </ul>
+                  <p class="mb-0">2. Upload a colour <b>picture of your face</b>, passport style</p>
+                  <ul>
+                    <li>Live (not of a photograph for webcam)</li>
+                    <li>Plain background</li>
+                    <li>Sharp and in-focus</li>
+                  </ul>
+                  <p class="mb-0">3. Upload <b>proof of residential address</b> issued within 3 months from current date</p>
+                  <ul>
+                    <li>Credit card statement / Bank statement / Utility bill  / Government issued
+                      document</li>
+                    <li>Notarised English translation if the document is not in English</li>
+                  </ul>
+                  <p class="mb-0">NOTE:<br/></p>
+                  <div class="d-flex justify-content-start">
+                      <span class="mr-2">*</span>
+                      <span>Images must be in JPG or PNG format, less than 8,000 pixels wide &amp; 5 MB. Webcam min 720p.<br/>Documents must be JPG, PNG or PDF format and less than 10MB.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <h3 class="text-center modal-desc">Please prepare a selfie holding your ID</h3> -->
+          </div> 
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="modal fade" id="kyc_popup" tabindex="-1" role="dialog" aria-labelledby="modal_subscribeLabel" aria-hidden="true">
+  <div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content subscribe-modal" style="border: none; background: none;">
+        <div  class="wrap-modal-body">
+          <div class="modal-body">
+            <div class="container" style="border-radius: 15px 0; background: white;">
+              <div class="row">
+                <div class="col-12">
+                  <%#= image_tag("kyc_popup.png", class: "logo_x img-fluid") %>
+                  <p>Using your <strong>webcam</strong> enabled device, please prepare the following:</p>
+                  <p>1. Capture an image of your valid ID document</p>
+                  <ul>
+                    <li>Of original only (not a copy)</li>
+                    <li>Unobstructed</li>
+                    <li>Sharp and in-focus</li>
+                  </ul>
+                  <p>2. Take a picture of your face</p>
+                  <ul>
+                    <li>Passport Style</li>
+                    <li>Live (not a photograph)</li>
+                    <li>Plain background</li>
+                    <li>Sharp and in-focus</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-center modal-desc">Please prepare a selfie holding your ID</h3>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+<script type="text/javascript">
+  function receiveMessage(event) {
+    var data = window.JSON.parse(event.data);
+    console.log('Netverify Web was loaded in an iframe.');
+    // console.log('auth token:', data.authorizationToken);
+    console.log('transaction reference:', data.transactionReference);
+    console.log('customer internal reference:', data.customerInternalReference);
+    console.log('event type:', data.eventType);
+    console.log('date-time:', data.dateTime);
+    console.log('event value:', data.payload.value);
+    console.log('event metainfo:', data.payload.metainfo);
+    
+  }
+  window.addEventListener("message", receiveMessage, false);
+  // window.onbeforeunload = function () {return false;}
+
+
+
+  $('#kyc_popup').modal("show");
+  //setTimeout(function(){
+  //  $('#kyc_popup').modal("hide");
+  //}, 5000 );
+</script>
