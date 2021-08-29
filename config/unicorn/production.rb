@@ -16,19 +16,19 @@ before_exec do |_|
   ENV["BUNDLE_GEMFILE"] = File.join(app_path, "Gemfile")
 end
 
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+# before_fork do |server, worker|
+#   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
 
-  old_pid = "#{app_path}/tmp/pids/unicorn.pid.oldbin"
+#   old_pid = "#{app_path}/tmp/pids/unicorn.pid.oldbin"
 
-  if File.exists?(old_pid) && server.pid != old_pid
-    begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH
-    end
-  end
-end
+#   if File.exists?(old_pid) && server.pid != old_pid
+#     begin
+#       Process.kill("QUIT", File.read(old_pid).to_i)
+#     rescue Errno::ENOENT, Errno::ESRCH
+#     end
+#   end
+# end
 
-after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
-end
+# after_fork do |server, worker|
+#   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+# end
