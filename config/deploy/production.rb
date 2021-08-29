@@ -61,3 +61,9 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+set :user, "ubuntu"
+set :deploy_via, :remote_cache
+set :conditionally_migrate, true
+set :rails_env, "production"
+
+server "18.220.35.207", user: fetch(:user), port: fetch(:port), roles: %w(web app db)

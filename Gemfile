@@ -43,6 +43,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem "unicorn"
 
 
 # File uploading
@@ -78,7 +79,6 @@ group :development do
   gem "capistrano"
   gem "capistrano-rails"
   gem "capistrano3-unicorn"
-  gem "unicorn"
   gem "capistrano-rvm"
   gem 'web-console', '>= 4.1.0'
 
